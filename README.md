@@ -73,8 +73,47 @@ Let's go ahead and deploy the agent on our running Minikube cluster.  We deploy 
 
 ## Install Helm and deploy Agent
 
-Install Helm by running the following command:
-	```
-	
+1.  Install Helm by running the following command:
+
 	brew install helm
-	```
+	
+2.  You can create your own Helm Chart config (values.yaml) file based on features you need - the sample file is provided at https://github.com/DataDog/helm-charts/blob/main/charts/datadog/values.yaml
+
+	Alternatively you can use the pre-profided configuration below:
+		
+		
+		datadog:
+		  # Disable kubelet TLS Verification in minikube
+		  kubelet:
+		    tlsVerify: false
+
+		  kubeStateMetricsEnabled: false
+		  kubeStateMetricsCore:
+		    enabled: true
+
+		  orchestratorExplorer:
+		    enabled: true
+		  logs:
+		    enabled: true
+		    containerCollectAll: true
+		  apm:
+		    socketEnabled: false
+		    portEnabled: true
+		  processAgent:
+		    enabled: true
+		    processCollection: true
+
+		  clusterChecks:
+		    enabled: true
+
+		  # These 3 integrations error by default in minikube
+		  ignoreAutoConfig:
+		    - etcd
+		    - kube_controller_manager 
+		    - kube_scheduler 
+
+		clusterAgent:
+		  enabled: true
+  ```
+	
+	
