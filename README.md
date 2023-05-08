@@ -114,6 +114,22 @@ Let's go ahead and deploy the agent on our running Minikube cluster.  We deploy 
 
 		clusterAgent:
 		  enabled: true
-  ```
-	
-	
+  
+  
+3.  For the first install, it's necessary to add the Datadog repo and the Helm stable repo with the following commands:
+```
+	helm repo add datadog https://helm.datadoghq.com
+	helm repo add stable https://charts.helm.sh/stable
+```	
+
+4.  Fetch latest charts from these repos with the command:
+```
+	helm repo update
+```
+
+5.  Run Helm chart to deploy the Agent on our Minikube
+```
+	helm install <RELEASE_NAME> -f values.yaml  --set datadog.apiKey=<DATADOG_API_KEY> datadog/datadog
+```
+	```<RELEASE_NAME>```: A release is the name given by Helm when you deploy a chart to your Kubernetes environment.  This value can be anything you want, ```datadog``` or ```release``` for example.
+	```<DATADOG_API_KEY>```: The API key of your sandbox account.
