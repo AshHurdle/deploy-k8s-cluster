@@ -28,8 +28,43 @@ This documentation assumes the following are installed on your machine:
 	```
 ## Minikube installed - What now?
 
+To take a look at everything running on our Minikube - we can run the following command to get a look at all our pods:
 
+	kubectl get pods --all-namespaces
+	
+The --all-namespaces bit allows us to see pods from ***every namespace***.  In Kubernetes, you can separate pods and run them under different namespaces - perhaps for organization, security, or performance purposes.
 
+## Minikube commands
+
+A few useful commands for Minikube include:
+
+```
+minikube start
+minikube stop
+minikube status
+```
+
+Start a new fresh environment with profiles:
+```
+minikube start -p <name_of_your_profile>
+```
+
+See all the profiles created:
+```
+minikube profile list
+```
+
+Delete a profile:
+```
+minikube delete -p <name_of_your_profile>
+```
+
+Connect to minikube:
+```
+minikube ssh
+```
+
+More minikube commands can be found here https://minikube.sigs.k8s.io/docs/commands/
 
 
 
