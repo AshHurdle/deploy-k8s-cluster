@@ -67,4 +67,14 @@ minikube ssh
 More minikube commands can be found here https://minikube.sigs.k8s.io/docs/commands/
 
 
+# Deploy the Agent to Minikube cluster
 
+Let's go ahead and deploy the agent on our running Minikube cluster.  We deploy the agent a couple ways on K8s - the first is as a Daemonset, meaning one agent per node of K8s cluster (only one node on our cluster), and the second is by using Helm.
+
+## Install Helm and deploy Agent
+
+Install Helm by running the following command:
+	```
+	
+	brew install helm
+	```
